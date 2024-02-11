@@ -1,0 +1,32 @@
+*{
+  margin:0;
+  padding:0;
+  /* background-color: #595957;
+  color:white; */
+  font-family: sans-serif;
+ 
+  
+}
+
+ .Card{
+  height: 220px;
+  width:200px;
+  border: 2px solid white;
+  margin:5px;
+  padding: 10px;
+}
+.head{
+  font-size: 16px;
+  font-family: sans-serif;
+  
+} 
+.Container{
+  display: grid;
+  grid-template-columns:repeat(5,0.3fr);
+  overflow-y: scroll;
+  gap: 2px;
+  margin-left: 32px;
+}
+*::-webkit-scrollbar{
+   width: 0 !important;
+}
