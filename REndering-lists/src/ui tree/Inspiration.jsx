@@ -1,23 +1,36 @@
 
-import * as React from 'react';
- import Quotes from './quotes.jsx';
- import Fancytext from './fancytext.jsx';
+import {useState} from 'react'
+ import Quotes from './Data.jsx';
+ import Fancy from './Fancy.jsx';
  
- export default function Inspiration({children}) {
+ export default function Inspiration({children}){
+  const [index,SetINdex]=useState(0);
 
-   const [Index,setIndex]=React.useState(0);
+  const quotes=Quotes[index];
+  const pev = index > 0
+
+  const hasNext=  index <= Quotes.length-1
+  const Next=()=>{
+    if(hasNext){
+   SetINdex((index+1)) 
+    }
+    else{
+      SetINdex(0)
+    }
+  }
   
-     const quote=Quotes[Index];
-     const next = () => setIndex((Index + 1) % Quotes.length);
+  function Preve(){
+    SetINdex((index-1))
+  }
 
 
-   return (
-     <>
-        <h1>Your inspirational quote is:</h1>
-         <Fancytext text={quote}/>
-         <button onClick={next}>Next</button>
-          {children}
-     </>
-   )
- }
- 
+  return (
+    <div>
+      <h1>Get INspired app</h1>
+      <Fancy text={quotes}/>
+      <button onClick={Next} disabled={!hasNext}>Next</button>
+      <button  className="marg"onClick={Preve} disabled={!pev}>Prev</button>
+      {children}
+    </div>
+  )
+}
